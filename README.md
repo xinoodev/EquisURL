@@ -14,10 +14,10 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Express-black?logo=express" alt="Express">
-  <img src="https://img.shields.io/badge/JSON-black?logo=json" alt="JSON">
-  <img src="https://img.shields.io/badge/npm-red?logo=npm" alt="npm">
-  <img src="https://img.shields.io/badge/.ENV-yellow?logo=dotenv" alt=".ENV">
-  <img src="https://img.shields.io/badge/JavaScript-yellow?logo=javascript" alt="JavaScript">
-  <img src="https://img.shields.io/badge/Nodemon-green?logo=nodemon" alt="Nodemon">
+  <img src="https://img.shields.io/badge/Express-black?logo=express&labelColor=white" alt="Express">
+  <img src="https://img.shields.io/badge/JSON-black?logo=json&labelColor=white" alt="JSON">
+  <img src="https://img.shields.io/badge/npm-red?logo=npm&labelColor=black" alt="npm">
+  <img src="https://img.shields.io/badge/.ENV-gray?logo=dotenv&labelColor=white" alt=".ENV">
+  <img src="https://img.shields.io/badge/JavaScript-yellow?logo=javascript&labelColor=black" alt="JavaScript">
+  <img src="https://img.shields.io/badge/Nodemon-green?logo=nodemon&labelColor=black" alt="Nodemon">
 </p>
