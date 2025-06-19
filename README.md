@@ -74,20 +74,20 @@ PORT=1337 (default port but you can change it)
 <ol>
     <li class="my-0">
         <p><strong>Clone the repository:</strong></p>
-        ```sh
-        ❯ git clone https://github.com/xinoodev/EquisURL
-        ```
+        <pre><code class="language-sh">❯ git clone https://github.com/xinoodev/EquisURL</code></pre>
     </li>
     <li class="my-0">
         <p><strong>Navigate to the project directory:</strong></p>
-        ```sh
-        ❯ cd EquisURL
-        ```
+        <pre><code class="language-sh">❯ cd EquisURL</code></pre>
     </li>
     <li class="my-0">
         <p><strong>Install the dependencies:</strong></p>
     </li>
 </ol>
+
+<p><strong>Using <a href="https://www.npmjs.com/">npm</a>:</strong></p>
+
+<pre><code class="language-sh">❯ npm install</code></pre>
 
 ### Usage
 
