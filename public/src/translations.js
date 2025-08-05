@@ -10,7 +10,11 @@ const translations = {
     loading: "Cargando",
     shortUrlText: "Tu URL acortada es:",
     goBack: "Ir atrás",
-    footer: "Copyright ©"
+    footer: "Copyright ©",
+
+    // 404.ERROR_PAGE: "Error 404 - Página no encontrada"
+    pageNotFound: "Página web no encontrada.",
+    notFoundTitle: "EquisURL - Error 404"
   },
   en: {
     title: "EquisURL - Shorten your Links",
