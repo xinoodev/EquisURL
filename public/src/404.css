@@ -27,14 +27,20 @@ header {
     transform: translateX(-50%);
 }
 
-.logo {
-    max-width: 200px;
-    height: auto;
+.container-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    padding: 40px 20px 140px;
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
 }
 
-.logo2 {
-    max-width: 150px;
-    height: auto;
+.logo-section.mb {
+    margin-bottom: 40px;
 }
 
 .image {
@@ -43,14 +49,14 @@ header {
     border-radius: 20px;
     background: rgba(0, 0, 0, 0.3);
     padding: 20px;
-    margin: 20px 0;
+    margin: 20px 0px 20px 0px;
 }
 
 .notfound {
-    background: rgba(239, 68, 68, 0.8);
+    background: rgba(239, 68, 68, 0.6);
     padding: 20px 30px;
     border-radius: 20px;
-    margin: 20px 0;
+    margin-bottom: 20px;
 }
 
 .not-found {
@@ -58,30 +64,6 @@ header {
     font-weight: 500;
     text-align: center;
     color: #ffffff;
-}
-
-.go-home-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 16px;
-    margin-top: 30px;
-    transition: all 0.3s ease;
-}
-
-.arrow {
-    margin-right: 10px;
-    transition: transform 0.3s ease;
-}
-
-.go-home-link:hover {
-    color: #4ADE80;
-}
-
-.go-home-link:hover .arrow {
-    transform: translateX(-5px);
 }
 
 footer {
