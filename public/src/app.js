@@ -7,6 +7,7 @@ const app = new Vue({
     formVisible: true,
     created: null,
     waiting: false,
+    currentYear: new Date().getFullYear()
   },
   methods: {
     async createUrl() {
@@ -37,4 +38,7 @@ const app = new Vue({
       }
     },
   },
+  mounted() {
+    document.getElementById('currentYear').textContent = this.currentYear;
+  }
 });
