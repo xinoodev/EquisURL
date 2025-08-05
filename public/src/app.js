@@ -19,7 +19,8 @@ const app = new Vue({
     created: null,
     waiting: false,
     currentYear: new Date().getFullYear(),
-    currentLanguage: 'es'
+    currentLanguage: 'es',
+    isLoading: true
   },
   methods: {
     async createUrl() {
@@ -61,6 +62,12 @@ const app = new Vue({
       document.title = this.$t('title');
       document.querySelector('meta[name="description"]').setAttribute('content', this.$t('description'));
     },
+
+    hideLoader() {
+      this.isLoading = false;
+      document.getElementById('loader').style.display = 'none';
+      document.getElementById('app').style.display = 'block';
+    },
   },
   
   created() {
@@ -70,6 +77,9 @@ const app = new Vue({
 
   mounted() {
     document.getElementById('currentYear').textContent = this.currentYear;
+    setTimeout(() => {
+      this.hideLoader();
+    }, 600);
   },
 });
 

@@ -17,6 +17,10 @@
 </head>
 
 <body>
+  <div id="loader">
+      <div class="spinner"></div>
+  </div>
+
   <div id="app">
     <div class="boton_equisfiles">
       <a href="https://equisfiles.eu" class="equisfiles-boton" :title="$t('equisfilesTooltip')">{{
@@ -79,7 +83,8 @@
       i18n,
       data: {
         currentYear: new Date().getFullYear(),
-        currentLanguage: 'es'
+        currentLanguage: 'es',
+        isLoading: true
       },
       methods: {
         detectBrowserLanguage() {
@@ -92,6 +97,12 @@
           document.querySelector('html').setAttribute('lang', this.currentLanguage);
           document.querySelector('meta[name="description"]').setAttribute('content', this.$t('description'));
         },
+
+        hideLoader() {
+          this.isLoading = false;
+          document.getElementById('loader').style.display = 'none';
+          document.getElementById('app').style.display = 'block';
+        },
       },
 
       created() {
@@ -101,6 +112,9 @@
 
       mounted() {
         document.getElementById('currentYear').textContent = this.currentYear;
+        setTimeout(() => {
+          this.hideLoader();
+        }, 600);
       },
     });
   </script>
