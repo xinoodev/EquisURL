@@ -69,8 +69,8 @@ body {
 }
 
 .logo-icon {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     color: #ffffff;
     margin-bottom: 20px;
 }
@@ -81,7 +81,7 @@ body {
 }
 
 .logo-text {
-    font-size: 32px;
+    font-size: 40px;
     font-weight: 300;
     letter-spacing: 8px;
     color: #ffffff;
@@ -299,31 +299,31 @@ footer {
         gap: 40px;
     }
 
+    .logo-icon {
+        width: 90px;
+        height: 90px;
+    }
+
     .logo-text {
-        font-size: 28px;
+        font-size: 34px;
         letter-spacing: 6px;
     }
 }
 
 @media (max-width: 768px) {
     .container {
-        max-width: 90%;
-        padding: 30px 20px 20px;
+        padding: 30px 20px 140px;
         padding-top: 120px;
     }
 
     .logo-icon {
-        width: 60px;
-        height: 60px;
+        width: 80px;
+        height: 80px;
     }
 
     .logo-text {
-        font-size: 24px;
+        font-size: 32px;
         letter-spacing: 4px;
-    }
-
-    main {
-        max-width: 90%;
     }
 
     .equisfiles-boton {
@@ -337,12 +337,16 @@ footer {
 
 @media (max-width: 480px) {
     .container {
-        padding: 20px 15px 15px;
-        max-width: 95%;
+        padding: 20px 15px 80px;
+    }
+
+    .logo-icon {
+        width: 70px;
+        height: 70px;
     }
 
     .logo-text {
-        font-size: 20px;
+        font-size: 28px;
         letter-spacing: 3px;
     }
 
@@ -354,5 +358,10 @@ footer {
     .create {
         padding: 14px 28px;
         font-size: 14px;
+    }
+
+    input#url,
+    input#slug{
+        width: 280px;
     }
 }
