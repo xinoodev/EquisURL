@@ -1,69 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="¿Quieres acortar tus enlaces sin ver ningún anuncio? Usa EquisURL, tu página web para acortar enlaces de la forma más sencilla, encima puedes añadirle un apodo al enlace acortado.">
-  <title>EquisURL</title>
-  <link rel="stylesheet" href="src/styles.css">
-  <link rel="stylesheet" href="src/404.css">
-  <link rel="icon" href="src/equisurl.ico">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DFDTEL8TBR"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-DFDTEL8TBR');
-  </script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6374475186071078"
-  crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="¿Quieres acortar tus enlaces sin ver ningún anuncio? Usa EquisURL, tu página web para acortar enlaces de la forma más sencilla, encima puedes añadirle un apodo al enlace acortado.">
+    <title>EquisURL</title>
+    <link rel="stylesheet" href="src/styles.css">
+    <link rel="stylesheet" href="src/404.css">
+    <link rel="icon" href="src/equisurl.ico">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DFDTEL8TBR"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-DFDTEL8TBR');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6374475186071078" crossorigin="anonymous"></script>
 </head>
 <body>
-  <div class="boton_equisfiles">
-    <a href="https://equisfiles.eu" class="equisfiles-boton" title="Sube y comparte tus archivos con tus amigos de manera fácil y sin interrupciones.">EquisFiles</a>
-  </div>
-  <header>
-    <img class="logo" src="https://i.imgur.com/jLqZ0w2.png" title="¡Acorta tus LINKS con un apodo!">
-  </header>
-  <img src="https://i.imgur.com/7fTdcr0.gif" alt="Banner EquisURL" class="banner_equisurl">
-  <main id="app">
-    <form class="form" v-if="formVisible" @submit.prevent="createUrl()">
-      <div v-if="error" class="error">
-        {{error}}
-      </div>
-      <input class="input" type="text" v-model="url" name="url" id="url" placeholder="URL para acortar">
-      <input class="input" type="text" v-model="slug" name="slug" id="slug" placeholder="Apodo para URL">
-      <button type="submit" class="create">CREAR</button>
-    </form>
-    <div v-if="waiting">
-      <div class="loading text-center">
-        <div class="ring">
-          Cargando
-          <span></span>
+    <div class="boton_equisfiles">
+        <a href="https://equisfiles.eu" class="equisfiles-boton" title="Sube y comparte tus archivos con tus amigos de manera fácil y sin interrupciones.">EquisFiles</a>
+    </div>
+    
+    <div class="container">
+        <div class="logo-section">
+            <div class="logo-container">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="30" r="15" stroke="currentColor" stroke-width="3" fill="none"/>
+                        <circle cx="25" cy="65" r="15" stroke="currentColor" stroke-width="3" fill="none"/>
+                        <circle cx="75" cy="65" r="15" stroke="currentColor" stroke-width="3" fill="none"/>
+                        <line x1="42" y1="42" x2="33" y2="53" stroke="currentColor" stroke-width="3"/>
+                        <line x1="58" y1="42" x2="67" y2="53" stroke="currentColor" stroke-width="3"/>
+                    </svg>
+                </div>
+                <h1 class="logo-text">EQUISURL</h1>
+            </div>
         </div>
-      </div>
+        
+        <main id="app">
+            <form class="form" v-if="formVisible" @submit.prevent="createUrl()">
+                <div v-if="error" class="error">
+                    {{error}}
+                </div>
+                <input class="input" type="text" v-model="url" name="url" id="url" placeholder="URL para acortar">
+                <input class="input" type="text" v-model="slug" name="slug" id="slug" placeholder="Apodo para URL">
+                <button type="submit" class="create">CREAR</button>
+            </form>
+            
+            <div v-if="waiting">
+                <div class="loading text-center">
+                    <div class="ring">
+                        Cargando
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div v-if="created">
+                <p class="created">Tu URL acortada es: <br><a :href="created" class="created-url">{{created}}</a></p>
+                <br>
+                <a class="go-home-link" href="/">
+                    <svg class="arrow" width="28" height="28" viewBox="0 0 28 28" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M25.608 15.6363L25.608 11.8599L7.24473 11.8599L13.0697 6.03492L10.3914 3.35661L-9.02484e-05 13.7481L10.3914 24.1397L13.0697 21.4614L7.24473 15.6363L25.608 15.6363Z" fill="currentColor" />
+                    </svg>
+                    Ir atrás
+                </a>
+            </div>
+        </main>
     </div>
-    <div v-if="created">
-      <p class="created">Tu URL acortada es: <br><a :href="created" class="created-url">{{created}}</a></p>
-      <br>
-      <a class="go-home-link" href="/">
-        <svg class="arrow" width="28" height="28" viewBox="0 0 28 28" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-          <path d="M25.608 15.6363L25.608 11.8599L7.24473 11.8599L13.0697 6.03492L10.3914 3.35661L-9.02484e-05 13.7481L10.3914 24.1397L13.0697 21.4614L7.24473 15.6363L25.608 15.6363Z" fill="currentColor" />
-        </svg>
-        Ir atrás
-      </a>
-    </div>
-  </main>
-  <footer>
-    <div class="pt-5 text-center">
-      <p class="pt-2 text-muted footer">
-        Copyright © 2022
-        <a class="sp" href="https://twitter.com/equis_team"><span> @equis_team</span></a>.
-      </p>
-    </div>
-  </footer>
-  <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
-  <script src="src/app.js"></script>
+    
+    <footer>
+        <div class="pt-5 text-center">
+            <p class="pt-2 text-muted footer">
+                Copyright © <span id="currentYear"></span> <a class="sp" href="https://twitter.com/equis_team"><span>@equis_team</span></a>.
+            </p>
+        </div>
+    </footer>
+    
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="src/app.js"></script>
 </body>
 </html>
