@@ -1,5 +1,16 @@
+import translations from './translations.js';
+
+Vue.use(VueI18n);
+
+const i18n = new VueI18n({
+  locale: 'es',
+  fallbackLocale: 'en',
+  messages: translations,
+});
+
 const app = new Vue({
   el: '#app',
+  i18n,
   data: {
     url: '',
     slug: '',
@@ -7,7 +18,8 @@ const app = new Vue({
     formVisible: true,
     created: null,
     waiting: false,
-    currentYear: new Date().getFullYear()
+    currentYear: new Date().getFullYear(),
+    currentLanguage: 'es'
   },
   methods: {
     async createUrl() {
@@ -37,8 +49,28 @@ const app = new Vue({
         this.error = result.message;
       }
     },
+
+    detectBrowserLanguage() {
+      const browserLang = navigator.language || navigator.userLanguage;
+      this.currentLanguage = browserLang.startsWith('es') ? 'es' : 
+                             browserLang.startsWith('en') ? 'en' : 'es';
+    },
+
+    changeLanguage() {
+      document.querySelector('html').setAttribute('lang', this.currentLanguage);
+      document.title = this.$t('title');
+      document.querySelector('meta[name="description"]').setAttribute('content', this.$t('description'));
+    },
   },
+  
+  created() {
+    this.detectBrowserLanguage();
+    this.changeLanguage();
+  },
+
   mounted() {
     document.getElementById('currentYear').textContent = this.currentYear;
-  }
+  },
 });
+
+document.addEventListener('DOMContentLoaded', app);
