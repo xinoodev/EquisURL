@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html :lang="currentLanguage">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ $t('notFoundTitle') }}</title>
-  <meta name="description" content="{{ $t('description') }}"">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
+  <title>EquisURL - Error 404</title>
+  <meta name="description"
+    content="¿Quieres acortar tus enlaces sin ver ningún anuncio? Usa EquisURL, tu página web para acortar enlaces de la forma más sencilla, encima puedes añadirle un apodo al enlace acortado."">
+  <link rel=" stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
   <link rel="stylesheet" href="src/404.css">
   <link rel="stylesheet" href="src/styles.css">
   <link rel="icon" href="src/equisurl.ico">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue-i18n@8.24.4/dist/vue-i18n.js"></script>
   </script>
 </head>
 
@@ -62,10 +65,46 @@
     </footer>
   </div>
 
-  <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
-  <script src="https://unpkg.com/vue-i18n@8.26.7/dist/vue-i18n.js"></script>
-  <script src="src/translations.js" type="module"></script>
-  <script src="src/app.js" type="module"></script>
+  <script type="module">
+    import translations from './src/translations.js';
+
+    const i18n = new VueI18n({
+      locale: 'es',
+      fallbackLocale: 'en',
+      messages: translations,
+    });
+
+    new Vue({
+      el: '#app',
+      i18n,
+      data: {
+        currentYear: new Date().getFullYear(),
+        currentLanguage: 'es'
+      },
+      methods: {
+        detectBrowserLanguage() {
+          const browserLang = navigator.language || navigator.userLanguage;
+          this.currentLanguage = browserLang.startsWith('es') ? 'es' :
+            browserLang.startsWith('en') ? 'en' : 'es';
+        },
+
+        changeLanguage() {
+          document.querySelector('html').setAttribute('lang', this.currentLanguage);
+          document.querySelector('meta[name="description"]').setAttribute('content', this.$t('description'));
+        },
+      },
+
+      created() {
+        this.detectBrowserLanguage();
+        this.changeLanguage();
+      },
+
+      mounted() {
+        document.getElementById('currentYear').textContent = this.currentYear;
+      },
+    });
+  </script>
+
 </body>
 
 </html>

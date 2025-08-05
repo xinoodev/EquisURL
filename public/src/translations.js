@@ -13,8 +13,7 @@ const translations = {
     footer: "Copyright ©",
 
     // 404.ERROR_PAGE: "Error 404 - Página no encontrada"
-    pageNotFound: "Página web no encontrada.",
-    notFoundTitle: "EquisURL - Error 404"
+    pageNotFound: "Página web no encontrada."
   },
   en: {
     title: "EquisURL - Shorten your Links",
@@ -27,7 +26,10 @@ const translations = {
     loading: "Loading",
     shortUrlText: "Your shortened URL is:",
     goBack: "Go back",
-    footer: "Copyright © {year} @equis_team."
+    footer: "Copyright © {year} @equis_team.",
+    
+    // 404 error page translations
+    pageNotFound: "Web page not found."
   }
 };
 
