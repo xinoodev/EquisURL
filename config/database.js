@@ -1,12 +1,20 @@
-const monk = require('monk');
+const mongoose = require('mongoose');
 require('dotenv').config();
 
-const db = monk(process.env.MONGODB_URI);
-const urls = db.get('urls');
+// Modificar la URI para incluir el nombre de la base de datos
+const dbURI = `${process.env.MONGODB_URI}/equisurl_links`;
 
-urls.createIndex({ slug: 1 }, { unique: true });
+mongoose.connect(dbURI)
+  .then(() => console.log('[BASE DE DATOS] Conectado a la base de datos con éxito.'))
+  .catch(err => console.error('[BASE DE DATOS] Error de conexión:', err))
+
+const urlSchema = new mongoose.Schema({
+  slug: { type: String, required: true, unique: true },
+  url: { type: String, required: true },
+}, { collection: 'created_urls' });
+
+const Url = mongoose.model('Url', urlSchema);
 
 module.exports = {
-    db,
-    urls,
+  Url
 };

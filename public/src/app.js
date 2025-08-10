@@ -41,7 +41,7 @@ const app = new Vue({
         this.waiting = true;
         setTimeout(() => {
           this.waiting = false;
-          this.created = `https://urls.equis.site/${result.slug}`;
+          this.created = `http://localhost:1337/${result.slug}`;
         }, 3000)
       } else if (response.status === 429) {
         this.error = 'Estás enviando demasiadas solicitudes. Vuelve a intentarlo en 30 segundos.';

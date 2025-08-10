@@ -3,7 +3,7 @@ const { nanoid } = require('nanoid');
 const rateLimit = require('express-rate-limit');
 const slowDown = require('express-slow-down');
 const path = require('path');
-const { urls } = require('../config/database');
+const { Url } = require('../config/database');
 const schema = require('../config/schema');
 
 const router = express.Router();
@@ -13,7 +13,7 @@ const notFoundPath = path.join(__dirname, '../../public/404.html');
 router.get('/:id', async (req, res, next) => {
   const { id: slug } = req.params;
   try {
-    const url = await urls.findOne({ slug });
+    const url = await Url.findOne({ slug });
     if (url) {
       return res.redirect(url.url);
     }
@@ -43,17 +43,17 @@ router.post('/url', slowDown({
     if (!slug) {
       slug = nanoid(5);
     } else {
-      const existing = await urls.findOne({ slug });
+      const existing = await Url.findOne({ slug });
       if (existing) {
         throw new Error('Apodo en uso. 🌹');
       }
     }
     slug = slug.toLowerCase();
-    const newUrl = {
+    const newUrl = new Url({
       url,
       slug,
-    };
-    const created = await urls.insert(newUrl);
+    });
+    const created = await newUrl.save();
     res.json(created);
   } catch (error) {
     next(error);
