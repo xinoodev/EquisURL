@@ -57,7 +57,7 @@
 <ul class="list-disc pl-4 my-0">
     <li class="my-0"><strong>Programming Language:</strong> JavaScript</li>
     <li class="my-0"><strong>Package Manager:</strong> Npm</li>
-    <li class="my-0"><strong>Configure .ENV:</strong> Npm</li>
+    <li class="my-0"><strong>Configure .ENV:
 </ul>
 
 ```env
